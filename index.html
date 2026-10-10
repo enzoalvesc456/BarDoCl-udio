@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bar do Cláudio – Salgados feitos na hora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fffdf5;--ink:#241d08;--y:#f7c61b;--amber:#8a5f00;--card:#fff;--line:#eadfb4;--mute:#6a6244;--dark:#241d08;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#19150a;--ink:#fff8e0;--amber:#f7c61b;--card:#262009;--line:#3d3414;--mute:#c9bf95}}
+:root[data-theme="dark"]{--bg:#19150a;--ink:#fff8e0;--amber:#f7c61b;--card:#262009;--line:#3d3414;--mute:#c9bf95}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 Nunito,system-ui,sans-serif}
+h1,h2,h3{font-family:'Alfa Slab One',Georgia,serif;font-weight:400;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--dark);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--y);color:#241d08;border-bottom:3px solid #241d08}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
+.logo{font-family:'Alfa Slab One',Georgia,serif;font-size:20px;text-decoration:none;color:#241d08}
+nav{display:flex;gap:18px;font-weight:800;font-size:15px}
+nav a{text-decoration:none;color:#241d08}
+nav a:hover{text-decoration:underline}
+@media(max-width:620px){nav a:not(.cta-n){display:none}}
+.cta-n{background:#241d08;color:#fff!important;padding:6px 14px;border-radius:99px}
+.hero{background:var(--y);color:#241d08;overflow:hidden;
+background-image:linear-gradient(rgba(255,255,255,.35) 3px,transparent 3px),linear-gradient(90deg,rgba(255,255,255,.35) 3px,transparent 3px);background-size:64px 64px}
+.hero .wrap{padding-top:64px;padding-bottom:72px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr;padding-top:40px;padding-bottom:48px}}
+.hero h1{font-size:clamp(38px,7vw,70px)}
+.hero p{max-width:46ch;font-size:19px;margin:18px 0 26px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;border:0;cursor:pointer;font:800 17px Nunito,sans-serif;padding:14px 24px;border-radius:12px;text-decoration:none;background:#241d08;color:#fff}
+.btn.ghost{background:#fff;color:#241d08}
+.btn.wa{background:#1fa855;color:#fff}
+.ticket{background:#fff;color:#241d08;border:3px solid #241d08;border-radius:8px;padding:22px;transform:rotate(1.6deg);box-shadow:8px 8px 0 #241d08}
+.ticket b{display:block;font-family:'Alfa Slab One',Georgia,serif;font-weight:400;font-size:58px;line-height:1}
+.ticket span{display:block;margin-top:8px;font-weight:600}
+section{padding:60px 0}
+section h2{font-size:clamp(28px,5vw,40px);color:var(--amber);margin-bottom:8px}
+.sub{color:var(--mute);margin:0 0 28px;max-width:60ch}
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.cats button{font:800 15px Nunito,sans-serif;padding:8px 16px;border-radius:99px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.cats button[aria-pressed="true"]{background:var(--y);color:#241d08;border-color:#241d08}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.item{background:var(--card);border:1px solid var(--line);border-left:8px solid var(--y);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.item h3{font-size:19px}
+.item p{margin:0;color:var(--mute);font-size:15px;flex:1}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.price{font-weight:800;font-size:19px}
+.qty{display:flex;align-items:center;gap:10px}
+.qty button{width:36px;height:36px;border-radius:50%;border:2px solid var(--ink);background:var(--y);color:#241d08;font:800 20px/1 Nunito;cursor:pointer}
+.qty output{min-width:28px;text-align:center;font-weight:800}
+#pedido{background:var(--y);color:#241d08}
+#pedido h2{color:#241d08}
+#pedido .sub{color:#4a3f12}
+.cart{background:#fff;border:3px solid #241d08;border-radius:10px;padding:20px;max-width:620px}
+.cart li{list-style:none;display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eadfb4}
+.cart ul{margin:0 0 12px;padding:0}
+.cart .tot{display:flex;justify-content:space-between;font-size:22px;font-weight:800;margin:10px 0 6px}
+.cart .note{color:#6a6244;font-size:14px;margin-bottom:14px}
+.cart input,.cart select{width:100%;padding:11px;border-radius:8px;border:2px solid #241d08;font:600 16px Nunito;margin-bottom:10px;background:#fff;color:#241d08}
+.empty{color:#6a6244}
+.quem{max-width:60ch}
+.quem p{font-size:19px;margin:0}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.info div{border-top:5px solid var(--y);padding-top:12px}
+.info h3{font-size:20px;margin-bottom:6px;color:var(--amber)}
+.info p{margin:0;color:var(--mute)}
+footer{background:#241d08;color:#e9dfb4;padding:28px 0;text-align:center;font-size:15px}
+footer b{color:var(--y)}
+.wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;background:#1fa855;color:#fff;font-weight:800;padding:13px 20px;border-radius:99px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+@media(prefers-reduced-motion:no-preference){.ticket{animation:in .7s ease-out both}@keyframes in{from{opacity:0;transform:rotate(6deg) translateY(30px)}}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="logo" href="#">Bar do Cláudio</a>
+<nav><a href="#cardapio">Cardápio</a><a href="#quem">Quem somos</a><a href="#info">Onde estamos</a><a class="cta-n" href="#pedido">Fazer pedido</a></nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+<div>
+<h1>Salgado quente, saindo agora.</h1>
+<p>Coxinha crocante, esfiha macia e espeto no ponto, feitos na hora. Peça pelo site e a gente leva até você, sem taxa de entrega.</p>
+<div class="btns"><a class="btn" href="#pedido">Montar meu pedido</a><a class="btn ghost" href="#cardapio">Ver cardápio</a></div>
+</div>
+<aside class="ticket" aria-label="Preço dos salgados">
+<b>R$ 9,00</b><span>cada salgado, qualquer sabor. Entrega sem taxa.</span>
+</aside>
+</div></div>
+
+<section id="cardapio"><div class="wrap">
+<h2>Cardápio</h2>
+<p class="sub">Salgados a R$ 9,00 e bebidas a partir de R$ 3,00. Escolha as quantidades e envie o pedido direto pelo WhatsApp.</p>
+<div class="cats" role="group" aria-label="Filtrar por categoria"></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="pedido"><div class="wrap">
+<h2>Seu pedido</h2>
+<p class="sub">Confira os itens, informe seu nome e finalize pelo WhatsApp. A gente confirma o horário com você.</p>
+<div class="cart">
+<ul id="lista"></ul>
+<div class="tot"><span>Total</span><span id="total">R$ 0,00</span></div>
+<div class="note">Entrega sem taxa. Pagamento por Pix, cartão ou dinheiro.</div>
+<input id="nome" placeholder="Seu nome" autocomplete="name">
+<select id="entrega" aria-label="Retirada ou entrega"><option>Entrega</option><option>Retirar no balcão</option></select>
+<input id="end" placeholder="Endereço de entrega (obrigatório)" autocomplete="street-address">
+<select id="pag" aria-label="Forma de pagamento"><option>Pix</option><option>Cartão</option><option>Dinheiro</option></select>
+<button class="btn wa" id="enviar" style="width:100%">Enviar pedido pelo WhatsApp</button>
+</div>
+</div></section>
+
+<section id="quem"><div class="wrap quem">
+<h2>Quem somos</h2>
+<p>O bar leva o nome do Cláudio, que não está mais entre nós. O capricho no salgado e o carinho com quem chega continuam aqui, todos os dias.</p>
+</div></section>
+
+<section id="info" style="padding-top:0"><div class="wrap">
+<h2>Onde estamos</h2>
+<p class="sub">Passe aqui para comer na hora ou peça para receber em casa.</p>
+<div class="info">
+<div><h3>Endereço</h3><p>Rua Armando Falcone, 456</p></div>
+<div><h3>Horário</h3><p>Segunda a sábado, 8h às 17h<br>Fechado aos domingos e feriados</p></div>
+<div><h3>Entrega</h3><p>Sem taxa de entrega.</p></div>
+<div><h3>Pagamento</h3><p>Pix, cartão e dinheiro.</p></div>
+<div><h3>WhatsApp</h3><p>(18) 99810-4505</p></div>
+</div>
+</div></section>
+
+<footer><div class="wrap"><b>Bar do Cláudio</b> · Salgados feitos na hora<br>© 2026 Todos os direitos reservados</div></footer>
+<a class="wa-float" id="fl" href="#">Chamar no WhatsApp</a>
+
+<script>
+var WA="5518998104505";
+var P=[
+["Coxinha de frango","Massa macia, recheio de frango desfiado.","Salgados",9],
+["Coxinha de carne","Massa macia, recheio de carne temperada.","Salgados",9],
+["Esfiha de frango","Assada, com recheio de frango.","Salgados",9],
+["Esfiha de carne","Assada, com recheio de carne.","Salgados",9],
+["Bolinho de carne","Crocante por fora, carne temperada por dentro.","Salgados",9],
+["Espeto de porco","Espeto de carne de porco.","Salgados",9],
+["Espeto de frango","Espeto de frango.","Salgados",9],
+["Enroladinho de presunto e queijo","Massa dourada, presunto e queijo derretido.","Salgados",9],
+["Refrigerante","Sabores disponíveis no dia.","Bebidas",5],
+["Água","Garrafinha de água.","Bebidas",3],
+["Coca-Cola 1 litro","Garrafa de 1 litro.","Bebidas",10]
+];
+var q=P.map(function(){return 0}),cat="Todos";
+var cats=["Todos","Salgados","Bebidas"];
+function R(v){return "R$ "+v.toFixed(2).replace(".",",")}
+function drawCats(){var c=document.querySelector(".cats");c.innerHTML="";cats.forEach(function(n){var b=document.createElement("button");b.textContent=n;b.setAttribute("aria-pressed",n===cat);b.onclick=function(){cat=n;drawCats();drawGrid()};c.appendChild(b)})}
+function drawGrid(){var g=document.getElementById("grid");g.innerHTML="";P.forEach(function(p,i){if(cat!=="Todos"&&p[2]!==cat)return;var d=document.createElement("div");d.className="item";d.innerHTML='<h3>'+p[0]+'</h3><p>'+p[1]+'</p><div class="row"><span class="price">'+R(p[3])+'</span><div class="qty"><button aria-label="Tirar um '+p[0]+'" data-i="'+i+'" data-d="-1">−</button><output id="q'+i+'">'+q[i]+'</output><button aria-label="Adicionar um '+p[0]+'" data-i="'+i+'" data-d="1">+</button></div></div>';g.appendChild(d)})}
+document.getElementById("grid").addEventListener("click",function(e){var b=e.target.closest("button[data-i]");if(!b)return;var i=+b.dataset.i;q[i]=Math.max(0,q[i]+ +b.dataset.d);document.getElementById("q"+i).textContent=q[i];cart()});
+function total(){return q.reduce(function(a,b,i){return a+b*P[i][3]},0)}
+function cart(){var l=document.getElementById("lista");l.innerHTML="";var any=false;P.forEach(function(p,i){if(q[i]){any=true;var li=document.createElement("li");li.innerHTML="<span>"+q[i]+"x "+p[0]+"</span><span>"+R(p[3]*q[i])+"</span>";l.appendChild(li)}});if(!any){l.innerHTML='<li class="empty">Nenhum item ainda. Adicione salgados no cardápio.</li>'}
+document.getElementById("total").textContent=R(total())}
+function link(t){return "https://wa.me/"+WA+"?text="+encodeURIComponent(t)}
+document.getElementById("fl").href=link("Olá, Bar do Cláudio! Quero fazer um pedido.");
+document.getElementById("enviar").onclick=function(){if(!total()){alert("Adicione pelo menos um item ao pedido.");return}
+var ent=document.getElementById("entrega").value==="Entrega",ed=document.getElementById("end");
+if(ent&&!ed.value.trim()){alert("Informe o endereço de entrega.");ed.focus();return}
+var t="Olá, Bar do Cláudio! Meu pedido:\n";P.forEach(function(p,i){if(q[i])t+=q[i]+"x "+p[0]+"\n"});
+t+="Total: "+R(total())+"\n"+document.getElementById("entrega").value;
+var e=document.getElementById("end").value.trim();if(e&&document.getElementById("entrega").value==="Entrega")t+="\nEndereço: "+e;
+t+="\nPagamento: "+document.getElementById("pag").value;
+var n=document.getElementById("nome").value.trim();if(n)t+="\nNome: "+n;window.open(link(t),"_blank")};
+drawCats();drawGrid();cart();
+function tgl(){var e=document.getElementById("entrega").value==="Entrega";document.getElementById("end").style.display=e?"":"none"}
+document.getElementById("entrega").onchange=tgl;tgl();
+</script>
+</body>
+</html>
